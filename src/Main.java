@@ -40,7 +40,7 @@ public class Main
 	/**
 	 * 最短查找时间优先算法（SST）
 	 * @param init 磁头的初始位置
-	 * @param s 磁道请求序列
+	 * @param ss 磁道请求序列
 	 * @return 穿越的总磁道数的计算式与结果
 	 */
 	public static String sst(int init,int ss[]){
@@ -121,13 +121,14 @@ public class Main
 		return formula.toString()+"="+sum;
 	}
 	/**
-	 * 最短查找时间优先算法（SST）
+	 * 扫描算法（SST）
 	 * @param init 磁头的初始位置
-	 * @param s 磁道请求序列
+	 * @param ss 磁道请求序列
 	 * @param up 移动臂方向是否升序
 	 * @return 穿越的总磁道数的计算式与结果
 	 */
-	public static String scan(int init,int s[],boolean up){
+	public static String scan(int init,int ss[],boolean up){
+		int s[]=Arrays.copyOf(ss, ss.length);
 		Arrays.sort(s);
 		if(up){
 			return "("+s[s.length-1]+"-"+init+")+("+s[s.length-1]+"-"+s[0]+")="+(s[s.length-1]-init+s[s.length-1]-s[0]);
